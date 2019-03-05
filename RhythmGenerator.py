@@ -2,13 +2,13 @@
 #Written by Cameron Yeomans for Linear Algebra at the University of Utah 2019
 
 import re
-regex = "^[\+|\-]+$"
+regex = "^[\+|\-|\?]+$"
 
 print("Rhythm builder")
 print("use + to enter an eigth note")
 print("use - to enter an eigth rest")
+print("use ? to enter a wildcard")
 print("input must be 8 chars or less and contain only the chars + and -")
-
 error = True
 
 while(error):
@@ -30,7 +30,9 @@ for x in range(256):
         
     match = True
     for y in range(len(searchRhythm)):
-        if((searchRhythm[y] == "+" and binaryVal[y] == "0") or (searchRhythm[y] == "-" and binaryVal[y] == "1")):
+        if(searchRhythm[y] == "?"):
+            continue
+        elif((searchRhythm[y] == "+" and binaryVal[y] == "0") or (searchRhythm[y] == "-" and binaryVal[y] == "1")):
             match = False
     if(match):        
         rhythmsInBinary.append(binaryVal)
